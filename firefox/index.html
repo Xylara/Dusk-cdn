@@ -99,7 +99,12 @@
             window.sj = scramjet;
             scramjet.init("/fs/bin/firefox/sw.js");
         } catch (error) {
-            console.error("Scramjet initialization error:", error);
+            console.error("Scramjet initialization error - Attempting to reg sw regularly. This might break scramjet:", error);
+            try {
+                navigator.serviceWorker.register('/fs/bin/firefox/sw.js')
+            } catch (e) {
+                console.error("All attempts to register a serviceworker failed! " + e)
+            }
         }
     }
 
