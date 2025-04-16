@@ -7,34 +7,34 @@
     <script src="/baremux"></script>
     <script src="/epoxy"></script>
     <link rel="icon" type="image/png" href="./assets/favicon.png">
-    <script src="uv/uv.bundle.js"></script>
-    <script src="uv/uv.config.js"></script>
+    <script src="/fs/bin/firefox/uv/uv.bundle.js"></script>
+    <script src="/fs/bin/firefox/uv/uv.config.js"></script>
     <script src="assets/js/topbar.js"></script>
-    <link rel="prefetch" href="scram/scramjet.worker.js" />
-    <link rel="prefetch" href="scram/scramjet.shared.js" />
-    <script src="scram/scramjet.controller.js"></script>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/topbar.css">
+    <link rel="prefetch" href="/fs/bin/firefox/scram/scramjet.worker.js" />
+    <link rel="prefetch" href="/fs/bin/firefox/scram/scramjet.shared.js" />
+    <script src="/fs/bin/firefox/scram/scramjet.controller.js"></script>
+    <link rel="stylesheet" href="/fs/bin/firefox/assets/css/main.css">
+    <link rel="stylesheet" href="/fs/bin/firefox/assets/css/topbar.css">
 </head>
 <body>
     <nav class="topbar">
         <div class="topbar-container">
-            <a href="/" class="topbar-item">
-                <img src="assets/svg/home.svg" alt="Home" class="home-icon">
+            <a href="/fs/bin/firefox/" class="topbar-item">
+                <img src="/fs/bin/firefox/assets/svg/home.svg" alt="Home" class="home-icon">
             </a>
-            <a href="/settings" class="topbar-item">
-                <img src="assets/svg/settings.svg" alt="Settings" class="settings-icon">
+            <a href="/fs/bin/firefox/settings.html" class="topbar-item">
+                <img src="/fs/bin/firefox/assets/svg/settings.svg" alt="Settings" class="settings-icon">
             </a>
         </div>
     </nav>
     <nav class="bottombar">
         <div class="bottombar-container">
             <a href="https://discord.gg/T4TTpr8d" target="_blank" rel="noopener noreferrer" class="bottombar-item">
-                <img src="assets/svg/discord.svg" alt="Discord" class="discord-icon">
+                <img src="/fs/bin/firefox/assets/svg/discord.svg" alt="Discord" class="discord-icon">
                 <span>Discord</span>
             </a>
             <a href="https://github.com/Xylara/Xylara" target="_blank" rel="noopener noreferrer" class="bottombar-item">
-                <img src="assets/svg/github.svg" alt="Github" class="github-icon">
+                <img src="/fs/bin/firefox/assets/svg/github.svg" alt="Github" class="github-icon">
                 <span>Github</span>
             </a>
         </div>
@@ -84,20 +84,20 @@
 
         try {
             const scramjet = new ScramjetController({
-                prefix: "./scram/service/",
+                prefix: "/fs/bin/firefox/scram/service/",
                 files: {
-                    wasm: "./scram/scramjet.wasm.js",
-                    worker: "./scram/scramjet.worker.js",
-                    client: "./scram/scramjet.client.js",
-                    shared: "./scram/scramjet.shared.js",
-                    sync: "./scram/scramjet.sync.js"
+                    wasm: "/fs/bin/firefox/scram/scramjet.wasm.js",
+                    worker: "/fs/bin/firefox/scram/scramjet.worker.js",
+                    client: "/fs/bin/firefox/scram/scramjet.client.js",
+                    shared: "/fs/bin/firefox/scram/scramjet.shared.js",
+                    sync: "/fs/bin/firefox/scram/scramjet.sync.js"
                 },
                 flags: {
                     syncxhr: true
                 }
             });
             window.sj = scramjet;
-            scramjet.init("sw.js");
+            scramjet.init("/fs/bin/firefox/sw.js");
         } catch (error) {
             console.error("Scramjet initialization error:", error);
         }
@@ -154,13 +154,13 @@
     async function uvEncode(url) {
         const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
         localStorage.setItem("url", encodedUrl); 
-        window.location.href = "/proccy";
+        window.location.href = "/proccy.html";
     }
 
     async function sjEncode(url) {
-        const encodedUrl = "/scram/service/" + encodeURIComponent(url);
+        const encodedUrl = "/fs/bin/firefox/scram/service" + encodeURIComponent(url);
         localStorage.setItem("url", encodedUrl); 
-        window.location.href = "/proccy";
+        window.location.href = "/proccy.html";
     }
 
     document.addEventListener('DOMContentLoaded', () => {
