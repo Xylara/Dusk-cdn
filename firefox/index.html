@@ -154,13 +154,13 @@
     async function uvEncode(url) {
         const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
         localStorage.setItem("url", encodedUrl); 
-        window.location.href = "/proccy.html";
+        window.location.href = "proccy.html";
     }
 
     async function sjEncode(url) {
         const encodedUrl = "/fs/bin/firefox/scram/service" + encodeURIComponent(url);
         localStorage.setItem("url", encodedUrl); 
-        window.location.href = "/proccy.html";
+        window.location.href = "proccy.html";
     }
 
     document.addEventListener('DOMContentLoaded', () => {
