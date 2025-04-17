@@ -157,7 +157,8 @@
         }
 
     async function uvEncode(url) {
-        const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
+        // /fs/bin/firefox is only here because of dusk (nohost support yippie)
+        const encodedUrl = "/fs/bin/firefox/" + __uv$config.prefix + __uv$config.encodeUrl(url);
         localStorage.setItem("url", encodedUrl); 
         window.location.href = "/fs/bin/firefox/proccy.html";
     }
